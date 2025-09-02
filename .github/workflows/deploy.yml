@@ -1,0 +1,82 @@
+name: Deploy Insight Hunter
+
+on:
+  push:
+    branches:
+      - main
+      - "**"    # deploy previews for all branches
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "20"
+  # Set to "true" if you use the Cloudflare Vite plugin (redirected config).
+  # If false (default), we'll use Wrangler environments as usual.
+  USE_VITE_CF_PLUGIN: "false"
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      # ---------- Build (handles both modes) ----------
+      - name: Build (production on main, preview otherwise)
+        run: |
+          if [[ "${{ github.ref_name }}" == "main" ]]; then
+            if [[ "${USE_VITE_CF_PLUGIN}" == "true" ]]; then
+              echo "Vite CF plugin mode → CLOUDFLARE_ENV=production"
+              CLOUDFLARE_ENV=production npm run build
+            else
+              echo "Wrangler env mode → normal production build"
+              npm run build
+            fi
+          else
+            if [[ "${USE_VITE_CF_PLUGIN}" == "true" ]]; then
+              echo "Vite CF plugin mode → CLOUDFLARE_ENV=preview"
+              CLOUDFLARE_ENV=preview npm run build
+            else
+              echo "Wrangler env mode → normal preview build"
+              npm run build
+            fi
+          fi
+
+      - name: Wrangler Version
+        run: npx wrangler --version
+
+      # ---------- Deploy (production route on main) ----------
+      - name: Deploy (production)
+        if: github.ref_name == 'main'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          if [[ "${USE_VITE_CF_PLUGIN}" == "true" ]]; then
+            # In redirected-config mode, DO NOT use --env
+            npx wrangler deploy
+          else
+            # Classic Wrangler env deploy (uses [env.production] from wrangler.toml)
+            npx wrangler deploy --env production
+          fi
+
+      # ---------- Deploy (workers.dev on non-main) ----------
+      - name: Deploy (preview to workers.dev)
+        if: github.ref_name != 'main'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          # Always deploy to workers.dev for previews; no routes needed
+          npx wrangler deploy
