@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./welcome.css";
-import { DemoModal } from "DemoModal";
+import { DemoModal } from "./DemoModal";
 
 export default function Welcome() {
   const nav = useNavigate();
