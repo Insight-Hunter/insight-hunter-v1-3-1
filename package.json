@@ -10,7 +10,8 @@
     "worker:dev": "wrangler dev",
     "worker:deploy": "wrangler deploy",
     "pages:dev": "wrangler pages dev dist",
-    "pages:deploy": "wrangler pages deploy dist"
+    "pages:deploy": "wrangler pages deploy dist",
+    "deploy": "wrangler deploy && wrangler pages dep"
   },
   "dependencies": {
     "chart.js": "^4.5.0",
