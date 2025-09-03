@@ -1,0 +1,1 @@
+export default function Settings(){ return (<div><h1 style={{fontSize:28}}>Settings</h1><p className='lead'>Workspace, billing, and integrations.</p></div>) }

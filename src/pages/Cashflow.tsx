@@ -1,0 +1,1 @@
+export default function Cashflow(){ return (<div><h1 style={{fontSize:28}}>Cashflow</h1><p className='lead'>Cashflow predictor and alerts.</p></div>) }

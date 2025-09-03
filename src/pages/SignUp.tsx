@@ -1,0 +1,1 @@
+export default function SignUp(){ return (<div><h1 style={{fontSize:28}}>Create your account</h1><p className='lead'>Start your 14-day free trial.</p></div>) }

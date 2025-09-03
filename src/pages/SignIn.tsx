@@ -1,0 +1,1 @@
+export default function SignIn(){ return (<div><h1 style={{fontSize:28}}>Sign in</h1><p className='lead'>Authenticate to your workspace.</p></div>) }

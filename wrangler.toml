@@ -1,3 +1,5 @@
-account_id = "18c8e61a3669253dcfd0c7eec6be36a3"
-[env.production].routes = [{ pattern = "insight.hunterturner.com/*", zone_name = "hunterturner.com" }]
-[assets] directory = "./dist" (serving your Vite build)
+name = "insight-hunter"
+compatibility_date = "2024-11-08"
+
+[observability]
+enabled = true

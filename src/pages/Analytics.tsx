@@ -1,0 +1,1 @@
+export default function Analytics(){ return (<div><h1 style={{fontSize:28}}>Analytics & Trends</h1><p className='lead'>Trend highlights will appear here.</p></div>) }

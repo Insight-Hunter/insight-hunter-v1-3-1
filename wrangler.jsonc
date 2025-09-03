@@ -7,7 +7,8 @@
   "compatibility_date": "2025-04-01",
   "main": "./workers/app.ts",
   "vars": {
-    "VALUE_FROM_CLOUDFLARE": "Hello from Hono/CF"
+    "VALUE_FROM_CLOUDFLARE": "Hello from Hono/CF",
+    "CLOUDFLARE_API_TOKEN": "K_QMyr4sn17HY5lpOoI-jQqGH5gsK_KDTJZuH9lK"
   },
   "observability": {
     "enabled": true

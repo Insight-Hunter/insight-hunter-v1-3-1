@@ -1,0 +1,1 @@
+export default function ClientPortal(){ return (<div><h1 style={{fontSize:28}}>Client Portal</h1><p className='lead'>Share reports with clients.</p></div>) }
