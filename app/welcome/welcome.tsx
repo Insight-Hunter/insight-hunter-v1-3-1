@@ -3,6 +3,7 @@ import "./welcome.css";
 
 export default function Welcome() {
   const nav = useNavigate();
+  const [showDemo, setShowDemo] = useState(false);
 
   return (
     <main className="ih-welcome">
@@ -22,7 +23,7 @@ export default function Welcome() {
         <p className="ih-subtitle">Get started in a few simple steps</p>
 
         <div className="ih-hero">
-          {/* Wallet icon (inline SVG so no extra assets needed) */}
+          {/* Wallet icon */}
           <svg
             className="ih-wallet"
             viewBox="0 0 64 64"
@@ -59,28 +60,33 @@ export default function Welcome() {
         </div>
 
         <ul className="ih-list" role="list">
-          <li><span className="ih-check" aria-hidden>✔</span>Connect your accounts</li>
-          <li><span className="ih-check" aria-hidden>✔</span>Set up KPI Alerts insights</li>
-          <li><span className="ih-check" aria-hidden>✔</span>Get real-time insights from Auto-CFO</li>
-          <li><span className="ih-check" aria-hidden>✔</span>Monitor Crypto funds</li>
+          <li><span className="ih-check" aria-hidden="true">✔</span> Connect your accounts</li>
+          <li><span className="ih-check" aria-hidden="true">✔</span> Set up KPI Alerts insights</li>
+          <li><span className="ih-check" aria-hidden="true">✔</span> Get real-time insights from Auto-CFO</li>
+          <li><span className="ih-check" aria-hidden="true">✔</span> Monitor Crypto funds</li>
         </ul>
+    <>
+       <button onClick={() => setShowDemo(true)}>Explore Demo</button>
+       {showDemo && <DemoModal onClose={() => setShowDemo(false)} />}
+    </>
 
         <button
           className="ih-cta"
           onClick={() => nav("/BusinessSetup")}
           aria-label="Continue setup"
-        >Set
+        >
           Continue
         </button>
-            <a href="/SignIn" style={{ display: 'block', textAlign: 'center' }}>
-                Existing users sign in
-            </a>      
-            </section>
 
-      <div className="ih-home-indicator" aria-hidden />
-p[;ljl]
+        <a
+          href="/SignIn"
+          style={{ display: "block", textAlign: "center", marginTop: "12px" }}
+        >
+          Existing users sign in
+        </a>
+      </section>
 
-
+      <div className="ih-home-indicator" aria-hidden="true" />
     </main>
   );
 }
