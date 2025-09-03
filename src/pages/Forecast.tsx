@@ -1,69 +1,36 @@
-import { useEffect, useRef, useState } from 'react'
-import { Chart } from 'chart.js/auto'
+import { useEffect, useRef } from "react";
+import {
+  Chart, LineController, LineElement, PointElement, LinearScale, Title, CategoryScale, Tooltip, Legend,
+} from "chart.js";
+Chart.register(LineController, LineElement, PointElement, LinearScale, Title, CategoryScale, Tooltip, Legend);
 
-type Row = { month: string; cashIn: number; cashOut: number; netCash: number }
-
-export default function Forecast(){
-  const canvasRef = useRef<HTMLCanvasElement | null>(null)
-  const chartRef = useRef<Chart | null>(null)
-  const [loading, setLoading] = useState(true)
+export default function Forecast() {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
-    let mounted = True
+    if (!canvasRef.current) return;
+    const ctx = canvasRef.current.getContext("2d");
+    if (!ctx) return;
 
-    async function load(){
-      try{
-        const res = await fetch('/api/demo/forecast')
-        const rows: Row[] = await res.json()
+    const chart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: ["Sep", "Oct", "Nov", "Dec"],
+        datasets: [
+          { label: "Cash In", data: [28000, 29500, 31000, 33000], borderColor: "#36a2eb", backgroundColor: "rgba(54,162,235,.2)", tension: 0.3 },
+          { label: "Cash Out", data: [21000, 21900, 24000, 26000], borderColor: "#ff6384", backgroundColor: "rgba(255,99,132,.2)", tension: 0.3 }
+        ]
+      },
+      options: { responsive: true, plugins: { title: { display: true, text: "Cash Flow Forecast" }, legend: { position: "top" as const } } }
+    });
 
-        if(!mounted || !canvasRef.current) return
-        const labels = rows.map(r => r.month)
-        const cashIn = rows.map(r => r.cashIn)
-        const cashOut = rows.map(r => r.cashOut)
-        const netCash = rows.map(r => r.netCash)
-
-        const ctx = canvasRef.current.getContext('2d')
-        if(!ctx) return
-
-        if(chartRef.current){
-          chartRef.current.destroy()
-        }
-
-        chartRef.current = new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels,
-            datasets: [
-              { label:'Cash In', data: cashIn },
-              { label:'Cash Out', data: cashOut },
-              { label:'Net Cash', data: netCash },
-            ]
-          },
-          options: {
-            responsive:true,
-            plugins: { legend: { display: true, labels: { color: '#d0d7d6' } } },
-            scales: { 
-              x: { ticks: { color: '#d0d7d6' }, grid: { color: '#2a3232' } },
-              y: { ticks: { color: '#d0d7d6' }, grid: { color: '#2a3232' } }
-            }
-          }
-        })
-      } finally {
-        if(mounted) setLoading(false)
-      }
-    }
-
-    load()
-    return () => { mounted = false; if(chartRef.current) chartRef.current.destroy() }
-  }, [])
+    return () => chart.destroy();
+  }, []);
 
   return (
-    <div>
-      <h1 style={{fontSize:28, margin:'4px 0 12px'}}>Forecast</h1>
-      <div className="card">
-        {loading ? <div style={{padding:12, opacity:.8}}>Loading forecast…</div> : null}
-        <canvas ref={canvasRef} height={180}/>
-      </div>
-    </div>
-  )
+    <main style={{ padding: 24 }}>
+      <h1>Forecast</h1>
+      <canvas ref={canvasRef} />
+    </main>
+  );
 }

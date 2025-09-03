@@ -1,77 +1,53 @@
-import React, { useEffect, useState } from 'react'
-import { jsPDF } from 'jspdf'
+export default function Reports() {
+  const rows = [
+    { id: "R-001", name: "P&L – Aug", status: "Ready", size: "126 KB" },
+    { id: "R-002", name: "Cash Flow – Aug", status: "Ready", size: "98 KB" },
+    { id: "R-003", name: "AR Aging – Aug", status: "Draft", size: "—" }
+  ];
 
-type Kpi = { label: string; value: string }
-
-export default function Reports(){
-  const [kpis, setKpis] = useState<Kpi[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    let mounted = true
-    ;(async () => {
-      try {
-        const res = await fetch('/api/demo/summary')
-        if(!res.ok) throw new Error(`HTTP ${res.status}`)
-        const data: Kpi[] = await res.json()
-        if(mounted) setKpis(data || [])
-      } catch (e:any) {
-        if(mounted) setError(e?.message || 'Failed to load KPIs')
-      } finally {
-        if(mounted) setLoading(false)
-      }
-    })()
-    return () => { mounted = false }
-  }, [])
-
-  const downloadReportPdf = () => {
-    const doc = new jsPDF()
-    // Title
-    doc.setFontSize(18)
-    doc.text('Insight Hunter - Weekly Report', 20, 20)
-    // Date
-    doc.setFontSize(12)
-    const today = new Date()
-    doc.text(`Date: ${today.toLocaleDateString()}`, 20, 30)
-
-    // Dynamic KPIs
-    let y = 50
-    doc.setFontSize(12)
-    if (kpis && kpis.length){
-      doc.text('Summary KPIs:', 20, y); y += 8
-      kpis.forEach(k => {
-        doc.text(`• ${k.label}: ${k.value}`, 24, y)
-        y += 8
-      })
-    } else {
-      doc.text('No KPI data available.', 20, y)
-    }
-
-    doc.save('weekly_report.pdf')
-  }
+  const exportPdf = () => {
+    alert("PDF export stub — hook up jsPDF later.");
+  };
 
   return (
-    <div>
-      <h1 style={{fontSize:28, margin:'4px 0 12px'}}>Reports</h1>
-      <p className="lead">Generate P&L, Balance Sheet, and KPI PDFs.</p>
+    <main style={{ padding: 24 }}>
+      <h1>Reports</h1>
 
-      <div className="card" style={{margin:'8px 0', padding:'12px'}}>
-        <div style={{fontSize:16, fontWeight:700, marginBottom:8}}>This Week’s KPIs</div>
-        {loading && <div style={{opacity:.8}}>Loading KPIs…</div>}
-        {error && <div style={{color:'#faa'}}>Error: {error}</div>}
-        {!loading && !error && (
-          <ul style={{margin:0, paddingLeft:18}}>
-            {kpis.map((k, i) => (
-              <li key={i} style={{margin:'6px 0'}}>
-                <span style={{opacity:.75}}>{k.label}:</span> <strong>{k.value}</strong>
-              </li>
-            ))}
-          </ul>
-        )}
+      <div style={{ margin: "12px 0 16px" }}>
+        <button onClick={exportPdf} style={{ padding: "10px 14px", borderRadius: 8 }}>
+          Export Current View (PDF)
+        </button>
       </div>
 
-      <button onClick={downloadReportPdf} className="btn btn-primary download-btn">Download PDF</button>
-    </div>
-  )
+      <div style={{ overflowX: "auto" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+          <thead>
+            <tr>
+              <Th>ID</Th>
+              <Th>Name</Th>
+              <Th>Status</Th>
+              <Th>Size</Th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(r => (
+              <tr key={r.id} style={{ borderTop: "1px solid rgba(255,255,255,.12)" }}>
+                <Td>{r.id}</Td>
+                <Td>{r.name}</Td>
+                <Td>{r.status}</Td>
+                <Td>{r.size}</Td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </main>
+  );
+}
+
+function Th({ children }: { children: React.ReactNode }) {
+  return <th style={{ textAlign: "left", padding: "10px 8px", fontWeight: 600 }}>{children}</th>;
+}
+function Td({ children }: { children: React.ReactNode }) {
+  return <td style={{ padding: "10px 8px" }}>{children}</td>;
 }
