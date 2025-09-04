@@ -14,20 +14,37 @@ APP_NAME = "Insight Hunter"
 
 # ---------- KV Namespaces ----------
 [[kv_namespaces]]
-binding = "KV_SESSIONS"
-id = "your-kv-id-here"
-preview_id = "your-kv-preview-id"
+binding = "IH_SESSIONS
+id = "dfd5a580d2fa4439b7a1eda82a1cc62c"
+preview_id = "IH_SESSIONS"
+
+binding = "PAGES_KV"
+id = "dfd5a580d2fa4439b7a1eda82a1cc62c"
+preview_ID = "PAGES_KV"
+
+bindimg = KV
+id ="5d547bc308d1445d960d19636c589923"
+preview = "insight_hunter_kv"
 
 # ---------- R2 Buckets ----------
 [[r2_buckets]]
-binding = "REPORTS_BUCKET"
-bucket_name = "insight-hunter-reports"
+binding = "IH_TEMPLATES"
+bucket_name = "ih-templates"
+api = "https://18c8e61a3669253dcfd0c7eec6be36a3.r2.cloudflarestorage.com/ih-templates"
+
+binding = "R2"
+bucket_name = "insight-hunter"
+api = "https://18c8e61a3669253dcfd0c7eec6be36a3.r2.cloudflarestorage.com/insight-hunter"
 
 # ---------- D1 Database ----------
 [[d1_databases]]
 binding = "DB"
 database_name = "insight_hunter_db"
-database_id = "your-d1-id-here"
+database_id = "3678f73e-c2cb-48fb-9cb4-91e6141024f4"
+
+binding = DB_STEPS
+database_name = steps
+database_ID = "7d48731f-4a4c-46b2-a3cb-0d39f03a5331"
 
 # ---------- Queues (optional) ----------
 [[queues.producers]]
@@ -41,3 +58,6 @@ dataset = "ANALYTICS_ENGINE"
 
 [observability]
 enabled = true
+
+account_id = "18c8e61a3669253dcfd0c7eec6be36a3"
+
