@@ -17,7 +17,7 @@ const SignUp    = lazy(() => import("./pages/SignUp"));
 
 export default function App() {
   return (
-    <BrowserRouter>
+  <BrowserRouter>
     <Suspense fallback={<div style={{padding:24}}>Loading…</div>}>
      <Routes>
       <Route path="/" element={<Layout />}>
@@ -34,9 +34,9 @@ export default function App() {
         <Route path="/clientrequest" element={<ClientRequest />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
-   </Suspense>
+       </Route>
+     </Routes>
+    </Suspense>
    </BrowserRouter>
   );
 }
