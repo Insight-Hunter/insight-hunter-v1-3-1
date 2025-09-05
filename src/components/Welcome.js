@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./welcome.css";
-import DemoModal from "../components/DemoModal";
+import DemoModal from "./DemoModal";
 
 export default function Welcome() {
   const [showDemo, setShowDemo] = useState(false);

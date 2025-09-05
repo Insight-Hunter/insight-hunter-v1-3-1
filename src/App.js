@@ -1,8 +1,7 @@
-
 import Layout from "./components/Layout";
 import NotFound from "./pages/NotFound";
-import Welcome from "./pages/Welcome"; 
-import { Routes, Route } from "react-router-dom";
+import Welcome from "./components/Welcome"; 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { ClientRequest } from "http";
 
@@ -15,15 +14,15 @@ const ClientPortal = lazy(() => import("./pages/ClientPortal"));
 const Settings  = lazy(() => import("./pages/Settings"));
 const SignIn    = lazy(() => import("./pages/SignIn"));
 const SignUp    = lazy(() => import("./pages/SignUp"));
-const Home      = lazy(() => import("./pages/Home"));
 
-export default function app() {
+export default function App() {
   return (
+    <BrowserRouter>
     <Suspense fallback={<div style={{padding:24}}>Loading…</div>}>
      <Routes>
-      <Route element={<Layout />}>
+      <Route path="/" element={<Layout />}>
         {/* Home now points to Welcome */}
-        <Route path="/" element={<Welcome />} />
+        <Route index element={<Welcome />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/forecast" element={<Forecast />} />
         <Route path="/analytics" element={<Analytics />} />
@@ -38,5 +37,8 @@ export default function app() {
       </Route>
     </Routes>
    </Suspense>
+   </BrowserRouter>
   );
 }
+
+export default App;
