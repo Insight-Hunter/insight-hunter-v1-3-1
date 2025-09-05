@@ -1,6 +1,6 @@
 // components/WelcomePage.js
 import React, { useState } from 'react';
-import './WelcomePage.css';
+import './welcome.css';
 
 function WelcomePage() {
   const [showSuccess, setShowSuccess] = useState(false);
