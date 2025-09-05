@@ -5,11 +5,168 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Insight Hunter - Pitch Deck</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    .presentation-container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 1rem;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .nav-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      user-select: none;
+    }
+    .nav-btn {
+      font-size: 2rem;
+      color: #20B2AA;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+    .slide-counter {
+      font-weight: bold;
+      font-size: 1rem;
+      color: #20B2AA;
+    }
+    .progress-container {
+      width: 100%;
+      height: 6px;
+      background: #2d2d2d;
+      border-radius: 3px;
+      margin: 0 0 1rem 0;
+      overflow: hidden;
+    }
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #FF8C00, #FFA500);
+      transition: width 0.3s ease;
+    }
+    .slides-container {
+      flex-grow: 1;
+      position: relative;
+      min-height: 500px;
+    }
+    .slide {
+      display: none;
+      padding: 1.5rem;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+    .slide.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    h1, h2, h3 {
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.03em;
+    }
+    p, ul, li {
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .centered {
+      text-align: center;
+    }
+    .title-logo {
+      color: #FF8C00;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .tagline {
+      font-size: 1.3rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+      color: #20B2AA;
+    }
+    .version-badge {
+      font-size: 0.9rem;
+      opacity: 0.5;
+    }
+    .problem-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .problem-item {
+      flex: 1 1 300px;
+      background: #2d2d2d;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    .problem-icon {
+      font-size: 2rem;
+      color: #FFA500;
+      margin-bottom: 0.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+    table, th, td {
+      border: 1px solid #444;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background: #20B2AA;
+      color: #fff;
+    }
+    a {
+      color: #FFA500;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .list-tick {
+      color: #20B2AA;
+      font-weight: bold;
+      margin-right: 0.3rem;
+    }
+    .quote {
+      font-style: italic;
+      color: #eee;
+      border-left: 3px solid #20B2AA;
+      padding-left: 1rem;
+      margin: 2rem 0;
+    }
+  </style>
 </head>
 <body>
   <div class="presentation-container">
 
-    <!-- Navigation -->
     <div class="nav-controls">
       <button id="prevBtn" class="nav-btn">‹</button>
       <span class="slide-counter">
@@ -23,21 +180,310 @@
     </div>
 
     <div class="slides-container">
-      <!-- Slides will be inserted here -->
-      <!-- Add the rest of your slides here following the same structure as the example -->
+
+      <!-- Slide 1: Title -->
       <div class="slide active" data-slide="1">
         <div class="slide-content centered">
-          <div class="title-logo">
-            <div class="logo-icon">🎯</div>
-            <h1>Insight Hunter</h1>
-          </div>
+          <div class="title-logo">🎯</div>
+          <h1>Insight Hunter</h1>
           <p class="tagline">The AI-Powered CFO Assistant for Small Businesses & Freelancers</p>
           <div class="version-badge">v1.3.1</div>
         </div>
       </div>
-      <!-- Add all other slides here as per the prepared deck -->
+
+      <!-- Slide 2: The Problem -->
+      <div class="slide" data-slide="2">
+        <h2>The Problem</h2>
+        <div class="problem-grid">
+          <div class="problem-item">
+            <div class="problem-icon">💸</div>
+            <h3>Cash Flow Blindness</h3>
+            <p>82% of small businesses fail due to cash flow issues they didn't see coming</p>
+          </div>
+          <div class="problem-item">
+            <div class="problem-icon">🗂️</div>
+            <h3>Fragmented Financial Tools</h3>
+            <p>QuickBooks/Xero provide bookkeeping, but no intelligent forecasting or unified financial insights</p>
+          </div>
+          <div class="problem-item">
+            <div class="problem-icon">⏳</div>
+            <h3>Time-Consuming Manual Reporting</h3>
+            <p>Manual data consolidation and reporting causes missed opportunities and stress for freelancers and small business owners</p>
+          </div>
+        </div>
+        <p class="quote">"I spend more time wrestling with spreadsheets than growing my business" - Typical freelancer</p>
+      </div>
+
+      <!-- Slide 3: Market Opportunity -->
+      <div class="slide" data-slide="3">
+        <h2>Market Opportunity</h2>
+        <ul>
+          <li><strong>$47B+</strong> financial automation market, growing at <strong>14.6% CAGR</strong></li>
+          <li>Target audience: <strong>65M freelancers</strong> with avg. $50K+ income in U.S.</li>
+          <li><strong>33M small businesses</strong>, especially in professional services</li>
+          <li><strong>50K+ fractional CFOs</strong> managing multiple clients</li>
+          <li>Drivers: Accelerating AI/automation adoption and remote work trends</li>
+          <li>Small businesses increasingly seek cost-effective CFO-level insights</li>
+        </ul>
+      </div>
+
+      <!-- Slide 4: Our Solution -->
+      <div class="slide" data-slide="4">
+        <h2>Our Solution</h2>
+        <p><strong>Insight Hunter:</strong> Smart Financial Intelligence That Adapts to You</p>
+        <h3>Three-Step Onboarding Process:</h3>
+        <ol>
+          <li><strong>Connect Your Accounts</strong> - Seamless bank and invoice integration</li>
+          <li><strong>Set Up Invoice Insights</strong> - AI categorizes transactions automatically</li>
+          <li><strong>Enable Wallet Sync</strong> - Real-time expense tracking with enterprise-grade encryption</li>
+        </ol>
+        <h3>Core Value: Upload your data → Get CFO-level insights instantly</h3>
+        <ul>
+          <li><span class="list-tick">✓</span> Risk Scoring - AI analyzes cash flow patterns for early warnings</li>
+          <li><span class="list-tick">✓</span> Smart Forecasting - 12-month predictions with scenario modeling</li>
+          <li><span class="list-tick">✓</span> Automated Reporting - P&L, balance sheet, KPI dashboards</li>
+          <li><span class="list-tick">✓</span> Data Points Glow - Visual analytics highlight critical trends</li>
+          <li><span class="list-tick">✓</span> Client-Ready Exports - Professional PDF reports for stakeholders</li>
+        </ul>
+        <p>Built for non-technical business owners who need clarity, fast.</p>
+      </div>
+
+      <!-- Slide 5: Product Demo -->
+      <div class="slide" data-slide="5">
+        <h2>Product Demo</h2>
+        <p><strong>Live MVP (v1.3.1):</strong> insight.hunterturner.com</p>
+        <ul>
+          <li>Intelligent onboarding workflow</li>
+          <li>Risk assessment algorithms</li>
+          <li>12-month cash flow forecasting</li>
+          <li>Automated P&L generation</li>
+          <li>Visual trend analysis – "data points glow"</li>
+          <li>Multi-client management</li>
+          <li>Enterprise-grade security</li>
+        </ul>
+        <p><em>Coming next: enhanced analytics dashboard, mobile-responsiveness, advanced trend predictions.</em></p>
+      </div>
+
+      <!-- Slide 6: Competitive Advantage -->
+      <div class="slide" data-slide="6">
+        <h2>Competitive Advantage</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Insight Hunter</th>
+              <th>QuickBooks</th>
+              <th>Wave</th>
+              <th>Traditional CFO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AI Risk Scoring</td>
+              <td>✓ Advanced</td>
+              <td>✗ None</td>
+              <td>✗ None</td>
+              <td>⚠️ Manual</td>
+            </tr>
+            <tr>
+              <td>Visual Analytics</td>
+              <td>✓ Interactive</td>
+              <td>✗ Basic</td>
+              <td>✗ Limited</td>
+              <td>✗ Spreadsheets</td>
+            </tr>
+            <tr>
+              <td>Setup Time</td>
+              <td>3 minutes</td>
+              <td>2+ hours</td>
+              <td>1+ hours</td>
+              <td>Weeks</td>
+            </tr>
+            <tr>
+              <td>Monthly Cost</td>
+              <td>$49 - $199</td>
+              <td>$30 - $200</td>
+              <td>Free - $50</td>
+              <td>$5,000+</td>
+            </tr>
+            <tr>
+              <td>Enterprise Security</td>
+              <td>✓ Built-in</td>
+              <td>⚠️ Add-on</td>
+              <td>✗ Limited</td>
+              <td>✓ Custom</td>
+            </tr>
+            <tr>
+              <td>Client Workflows</td>
+              <td>✓ Native</td>
+              <td>✗ Manual</td>
+              <td>✗ Manual</td>
+              <td>✓ Manual</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Slide 7: Business Model -->
+      <div class="slide" data-slide="7">
+        <h2>Business Model</h2>
+        <h3>Three Revenue Streams:</h3>
+        <ul>
+          <li><strong>SaaS Subscriptions</strong>
+            <ul>
+              <li><strong>Starter</strong>: $49/month (freelancers, solopreneurs) - Basic dashboard, risk scoring, forecasting</li>
+              <li><strong>Professional</strong>: $99/month (small businesses, agencies) - Advanced analytics, client reporting, integrations</li>
+              <li><strong>Enterprise</strong>: $199/month (fractional CFOs, multi-client) - White-label options, advanced security, priority support</li>
+            </ul>
+          </li>
+          <li><strong>White-Label Platform</strong> - $500/month + revenue share, custom branding, multi-tenant management</li>
+          <li><strong>One-Off Insight Reports</strong> - $100 per detailed report, project-focused</li>
+        </ul>
+        <p><em>Target allocation: 70% SaaS, 20% white-label, 10% reports.</em></p>
+      </div>
+
+      <!-- Slide 8: Go-to-Market Strategy -->
+      <div class="slide" data-slide="8">
+        <h2>Go-to-Market Strategy</h2>
+        <h3>Phase 1 - Visual-First Direct Marketing (Q4 2025)</h3>
+        <ul>
+          <li>Content marketing with interactive demos & visual storytelling</li>
+          <li>Social media campaigns highlighting the "data points glow"</li>
+          <li>Freemium onboarding with beautiful UX</li>
+        </ul>
+        <h3>Phase 2 - Partnership Ecosystem (Q1 2026)</h3>
+        <ul>
+          <li>QuickBooks, Xero & banking API integrations</li>
+          <li>Referral programs and co-working partnerships</li>
+        </ul>
+        <h3>Phase 3 - White-Label & Enterprise (Q2 2026)</h3>
+        <ul>
+          <li>White-label accounting firm partnerships</li>
+          <li>Enterprise sales focused on security & multi-client</li>
+          <li>Channel partner programs</li>
+        </ul>
+      </div>
+
+      <!-- Slide 9: Financial Projections -->
+      <div class="slide" data-slide="9">
+        <h2>Financial Projections</h2>
+        <ul>
+          <li><strong>Year 1 (2026):</strong> $1.2M ARR, 1,000 customers, avg $100/mo</li>
+          <li><strong>Year 2 (2027):</strong> $4.8M ARR, 4,000 customers</li>
+          <li><strong>Year 3 (2028):</strong> $12M ARR, 10,000+ customers</li>
+        </ul>
+        <ul>
+          <li>Customer Lifetime Value: $750 - $1,200</li>
+          <li>Customer Acquisition Cost: $50 - $75</li>
+          <li>Gross Margin: 85%+</li>
+          <li>Net Revenue Retention: 115%+</li>
+        </ul>
+        <p>Path to profitability by month 18 with strong organic growth.</p>
+      </div>
+
+      <!-- Slide 10: Technology & UX -->
+      <div class="slide" data-slide="10">
+        <h2>Technology & User Experience</h2>
+        <ul>
+          <li>React/Next.js frontend with smooth animations and micro-interactions</li>
+          <li>Cloudflare Workers backend for low latency and scalability</li>
+          <li>Supabase real-time database</li>
+          <li>AI models for risk scoring and forecasting</li>
+          <li>Enterprise-grade encryption with simple UX</li>
+          <li>\"Data Points Glow\": proprietary visual analytics for instant insights</li>
+          <li>Mobile-first design for on-the-go users</li>
+        </ul>
+      </div>
+
+      <!-- Slide 11: Traction & Validation -->
+      <div class="slide" data-slide="11">
+        <h2>Traction & Validation</h2>
+        <ul>
+          <li>150+ beta users with 92% onboarding completion</li>
+          <li>Average session time: 15 minutes (high engagement)</li>
+          <li>78% would recommend based on clarity and visual design</li>
+          <li>5 potential white-label partners engaging</li>
+          <li>Cloudflare Startup Program approved</li>
+        </ul>
+      </div>
+
+      <!-- Slide 12: Team -->
+      <div class="slide" data-slide="12">
+        <h2>Team</h2>
+        <p><strong>Founder & CEO</strong></p>
+        <ul>
+          <li>Master of Science in Accounting (MSA)</li>
+          <li>MBA Finance background with 10+ years of financial analysis experience</li>
+          <li>Deep understanding of small business financial challenges</li>
+        </ul>
+        <p><strong>Technical & Design Leadership</strong></p>
+        <ul>
+          <li>Full-stack development with UI/UX expertise</li>
+          <li>Experience building fintech consumer-grade apps</li>
+          <li>Active in modern web dev communities</li>
+        </ul>
+        <p><strong>Advisory Board</strong></p>
+        <ul>
+          <li>Former CFO of professional services firm</li>
+          <li>Experienced fintech UX designer</li>
+        </ul>
+      </div>
+
+      <!-- Slide 13: Roadmap -->
+      <div class="slide" data-slide="13">
+        <h2>Roadmap</h2>
+        <ul>
+          <li><strong>Q4 2025:</strong> Interactive trend analysis, advanced onboarding, mobile app, 250 customers</li>
+          <li><strong>Q1 2026:</strong> Collaborative dashboards, risk visualization, white-label launch, 750 customers</li>
+          <li><strong>Q2 2026:</strong> QuickBooks/Xero integrations, AI recommendations, multi-client workflows, 1,500+ customers</li>
+          <li><strong>Q3 2026:</strong> Enterprise features, visual forecasting, international expansion, Series A ready</li>
+        </ul>
+      </div>
+
+      <!-- Slide 14: The Ask -->
+      <div class="slide" data-slide="14">
+        <h2>The Ask</h2>
+        <p><strong>Raising:</strong> $500K Seed Round</p>
+        <p><strong>Use of Funds:</strong></p>
+        <ul>
+          <li>35% Product Development - UX, frontend, analytics features</li>
+          <li>35% Customer Acquisition - Visual marketing, demos</li>
+          <li>30% Ops & infrastructure - support, scaling</li>
+        </ul>
+        <p><strong>Milestones:</strong> 1,000+ paying customers, $1.2M ARR, break-even by 18 months</p>
+      </div>
+
+      <!-- Slide 15: Investment Highlights -->
+      <div class="slide" data-slide="15">
+        <h2>Investment Highlights</h2>
+        <ul>
+          <li>Visual-first approach in a traditionally boring category</li>
+          <li>Superior onboarding with 92% completion rate</li>
+          <li>Mobile and cloud scalable architecture</li>
+          <li>Clear path to market leadership and $12M ARR</li>
+          <li>Strong unit economics and retention</li>
+        </ul>
+      </div>
+
+      <!-- Slide 16: Contact -->
+      <div class="slide" data-slide="16">
+        <h2>Contact</h2>
+        <p><strong>Ready to make financial insights beautiful and accessible?</strong></p>
+        <p>Founder: [Name]</p>
+        <p>Email: [email@insighthunter.com]</p>
+        <p>Live Demo: <a href="https://insight.hunterturner.com" target="_blank" style="color:#FFA500;">insight.hunterturner.com</a></p>
+      </div>
+
+      <!-- Slide 17: Appendix -->
+      <div class="slide" data-slide="17">
+        <h2>Appendix</h2>
+        <p>Additional metrics, financial details, and technical specifications available upon request.</p>
+      </div>
+
     </div>
   </div>
+
   <script src="app.js"></script>
 </body>
 </html>
+
