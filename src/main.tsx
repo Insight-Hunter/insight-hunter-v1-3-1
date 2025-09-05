@@ -6,10 +6,10 @@ import App from "./App";
 import "./components/welcome.css";
 import "./styles.css";
 
-const rootEl = document.getElementById("root");
-if (!rootEl) throw new Error("Root element #root not found");
+const root = document.getElementById("root");
+if (!root) throw new Error("Root element #root not found");
 
-createRoot(rootEl).render(
+createRoot(root).render(
    <React.StrictMode>
      <BrowserRouter>
        <App />
