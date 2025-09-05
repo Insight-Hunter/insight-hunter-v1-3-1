@@ -10,9 +10,9 @@ const rootEl = document.getElementById("root");
 if (!rootEl) throw new Error("Root element #root not found");
 
 createRoot(rootEl).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
-);
+   <React.StrictMode>
+     <BrowserRouter>
+       <App />
+     </BrowserRouter>
+   </React.StrictMode>
+  );
