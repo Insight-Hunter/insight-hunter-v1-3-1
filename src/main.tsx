@@ -12,7 +12,7 @@ if (!rootEl) throw new Error("Root element #root not found");
 createRoot(rootEl).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App>
+      <App />
     </BrowserRouter>
   </React.StrictMode>
 );
