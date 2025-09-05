@@ -1,0 +1,10 @@
+import{r as E,a as g,R as q,B as j}from"./react-BetXkiiI.js";(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))c(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const n of r.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&c(n)}).observe(document,{childList:!0,subtree:!0});function d(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function c(e){if(e.ep)return;e.ep=!0;const r=d(e);fetch(e.href,r)}})();var m={exports:{}},u={};/**
+ * @license React
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */var h;function w(){if(h)return u;h=1;var i=E(),s=Symbol.for("react.element"),d=Symbol.for("react.fragment"),c=Object.prototype.hasOwnProperty,e=i.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,r={key:!0,ref:!0,__self:!0,__source:!0};function n(f,t,y){var o,a={},p=null,_=null;y!==void 0&&(p=""+y),t.key!==void 0&&(p=""+t.key),t.ref!==void 0&&(_=t.ref);for(o in t)c.call(t,o)&&!r.hasOwnProperty(o)&&(a[o]=t[o]);if(f&&f.defaultProps)for(o in t=f.defaultProps,t)a[o]===void 0&&(a[o]=t[o]);return{$$typeof:s,type:f,key:p,ref:_,props:a,_owner:e.current}}return u.Fragment=d,u.jsx=n,u.jsxs=n,u}var x;function L(){return x||(x=1,m.exports=w()),m.exports}var R=L(),l={},v;function P(){if(v)return l;v=1;var i=g();return l.createRoot=i.createRoot,l.hydrateRoot=i.hydrateRoot,l}var b=P();const O=document.getElementById("root");if(!O)throw new Error("Root element #root not found");b.createRoot(O).render(R.jsx(q.StrictMode,{children:R.jsx(j,{children:R.jsx(App,{})})}));
+//# sourceMappingURL=index-Iv0bn-HX.js.map

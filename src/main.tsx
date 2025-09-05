@@ -1,45 +1,20 @@
+// src/main.tsx
 import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import App from "./App";
-import Layout from "./components/Layout";
-
-import Home from "./pages/Home";
-import Dashboard from "./pages/Dashboard";
-import Forecast from "./pages/Forecast";
-import Analytics from "./pages/Analytics";
-import Reports from "./pages/Reports";
-import Cashflow from "./pages/Cashflow";
-import ClientPortal from "./pages/ClientPortal";
-import Settings from "./pages/Settings";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import NotFound from "./pages/NotFound";
-
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import app from "./App";
+import "./pages/welcome.css";
 import "./styles.css";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+
+
+const rootEl = document.getElementById("root");
+if (!rootEl) throw new Error("Root element #root not found");
+
+createRoot(rootEl).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        {/* Welcome / Home page */}
-        <Route path="/" element={<Home />} />
-
-        {/* Layout wraps most pages */}
-        <Route element={<Layout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/forecast" element={<Forecast />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="/reports" element={<Reports />} />
-          <Route path="/cashflow" element={<Cashflow />} />
-          <Route path="/portal" element={<ClientPortal />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
+      <App />
     </BrowserRouter>
   </React.StrictMode>
 );

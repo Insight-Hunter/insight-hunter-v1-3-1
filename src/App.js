@@ -15,9 +15,9 @@ const ClientPortal = lazy(() => import("./pages/ClientPortal"));
 const Settings  = lazy(() => import("./pages/Settings"));
 const SignIn    = lazy(() => import("./pages/SignIn"));
 const SignUp    = lazy(() => import("./pages/SignUp"));
-const Home      = lazy(() => import("./pages/Welcome"));
+const Home      = lazy(() => import("./pages/Home"));
 
-export default function App() {
+export default function app() {
   return (
     <Suspense fallback={<div style={{padding:24}}>Loading…</div>}>
      <Routes>
