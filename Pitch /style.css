@@ -1,0 +1,17 @@
+/* Basic styles for Insight Hunter pitch */
+body {
+  background-color: #1a1a1a;
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.presentation-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Add your full style rules here based on theme and brand colors */
+
