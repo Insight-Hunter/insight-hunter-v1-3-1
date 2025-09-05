@@ -1,0 +1,12 @@
+/* app/welcome/welcome.css */
+.ih-welcome { min-height: 100vh; background:#050809; color:#e8f1ef; display:flex; flex-direction:column; }
+.ih-header { padding:16px 24px; border-bottom:1px solid rgba(255,255,255,.08); }
+.ih-logo { display:flex; gap:8px; align-items:center; font-weight:700; letter-spacing:.06em; }
+.ih-logo-mark { font-size:18px; }
+.ih-logo-type { font-size:14px; }
+.ih-content { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px 24px; text-align:center; }
+.ih-title { font-size:40px; line-height:1.1; margin:0 0 8px; }
+.ih-subtitle { opacity:.8; margin:0 0 24px; }
+.ih-cta { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.ih-btn { border:1px solid rgba(255,255,255,.16); padding:10px 16px; border-radius:10px; text-decoration:none; color:inherit; }
+.ih-btn.primary { border-color:transparent; background:#1fd1b5; color:#05100e; font-weight:600; }
