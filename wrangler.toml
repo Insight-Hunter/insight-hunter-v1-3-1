@@ -1,57 +1,60 @@
-
-name = "insight-hunter-v1-3-2"
-main = "dist/worker.mjs"          # if bundling a Worker entry
+name = "insight-hunter-v1"
+main = "dist/worker.mjs"
 compatibility_date = "2024-11-21"
+account_id = "18c8e61a3669253dcfd0c7eec6be36a3"
 
 [assets]
-directory = "dist"                # serve built static assets (SPA)
+directory = "dist"
 
+[build]
+command = "npm run build"
+cwd = "."
+upload_format = "modules"
+upload_dir = "./build"
 
-# ---------- Environment Vars ----------
 [vars]
 NODE_ENV = "production"
 APP_NAME = "Insight Hunter"
 
-# ---------- KV Namespaces ----------
 [[kv_namespaces]]
-binding = "IH_SESSIONS
+binding = "IH_SESSIONS"
 id = "dfd5a580d2fa4439b7a1eda82a1cc62c"
 preview_id = "IH_SESSIONS"
 
+[[kv_namespaces]]
 binding = "PAGES_KV"
 id = "dfd5a580d2fa4439b7a1eda82a1cc62c"
-preview_ID = "PAGES_KV"
+preview_id = "PAGES_KV"
 
-bindimg = KV
-id ="5d547bc308d1445d960d19636c589923"
-preview = "insight_hunter_kv"
+[[kv_namespaces]]
+binding = "KV"
+id = "5d547bc308d1445d960d19636c589923"
+preview_id = "insight_hunter_kv"
 
-# ---------- R2 Buckets ----------
 [[r2_buckets]]
 binding = "IH_TEMPLATES"
 bucket_name = "ih-templates"
-api = "https://18c8e61a3669253dcfd0c7eec6be36a3.r2.cloudflarestorage.com/ih-templates"
 
+
+[[r2_buckets]]
 binding = "R2"
 bucket_name = "insight-hunter"
-api = "https://18c8e61a3669253dcfd0c7eec6be36a3.r2.cloudflarestorage.com/insight-hunter"
 
-# ---------- D1 Database ----------
+
 [[d1_databases]]
 binding = "DB"
 database_name = "insight_hunter_db"
 database_id = "3678f73e-c2cb-48fb-9cb4-91e6141024f4"
 
-binding = DB_STEPS
-database_name = steps
-database_ID = "7d48731f-4a4c-46b2-a3cb-0d39f03a5331"
+[[d1_databases]]
+binding = "DB_STEPS"
+database_name = "steps"
+database_id = "7d48731f-4a4c-46b2-a3cb-0d39f03a5331"
 
-# ---------- Queues (optional) ----------
 [[queues.producers]]
 binding = "NOTIFY_QUEUE"
 queue = "insight-hunter-events"
 
-# ---------- Analytics Engine ----------
 [[analytics_engine_datasets]]
 binding = "AE"
 dataset = "ANALYTICS_ENGINE"
@@ -59,5 +62,37 @@ dataset = "ANALYTICS_ENGINE"
 [observability]
 enabled = true
 
-account_id = "18c8e61a3669253dcfd0c7eec6be36a3"
+# ------------ Development Environment ------------
+[env.dev]
+name = "insight-hunter-v1-dev"
+workers_dev = true
 
+[env.dev.vars]
+NODE_ENV = "development"
+APP_NAME = "Insight Hunter Dev"
+
+# If using different dev KV/R2/D1 resources, define here
+#[[env.dev.kv_namespaces]]
+#binding = "IH_SESSIONS"
+#id = "dev-kv-namespace-id"
+#preview_id = "IH_SESSIONS"
+
+# ------------ Staging Environment ------------
+[env.staging]
+name = "insight-hunter-v1-staging"
+route = "staging.example.com/*"
+zone_id = "your-staging-zone-id"
+
+[env.staging.vars]
+NODE_ENV = "staging"
+APP_NAME = "Insight Hunter Staging"
+
+# ------------ Production Environment ------------
+[env.production]
+name = "insight-hunter-v1-prod"
+route = "www.example.com/*"
+zone_id = "your-production-zone-id"
+
+[env.production.vars]
+NODE_ENV = "production"
+APP_NAME = "Insight Hunter"
