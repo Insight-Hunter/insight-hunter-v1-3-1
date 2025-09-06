@@ -3,7 +3,6 @@ import NotFound from "./pages/NotFound";
 import Welcome from "./components/Welcome"; 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import { ClientRequest } from "http";
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Forecast  = lazy(() => import("./pages/Forecast"));
@@ -31,7 +30,6 @@ export default function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signout" element={<SignUp />} />
         <Route path="/cashflow" element={<Cashflow />} />
-        <Route path="/clientrequest" element={<ClientRequest />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<NotFound />} />
        </Route>
