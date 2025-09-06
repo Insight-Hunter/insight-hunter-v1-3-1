@@ -5,20 +5,19 @@ export default defineConfig({
   plugins: [react()],
   server: { port: 5173 },
   build: {
-      outDir: 'dist',
-      sourcemap: true,
-      rollupOptions: {
-        input: 'src/worker.js',
-        output: {
-          entryFileNames: 'worker.mjs',
-          format: 'es'
-        },
+    outDir: 'dist',
+    sourcemap: true,
+    rollupOptions: {
+      input: 'src/worker.ts', // or 'src/worker.js' if JS
+      output: {
+        entryFileNames: 'worker.mjs',
+        format: 'es',
         manualChunks: {
-          react: ["react", "react-dom",          
-          "react-router-dom"],
-          chartjs: ["chart.js"],
-          capture: ["html2canvas"]
-      } 
+          react: ['react', 'react-dom', 'react-router-dom'],
+          chartjs: ['chart.js'],
+          capture: ['html2canvas']
+        }
+      }
     }
   }
 });
