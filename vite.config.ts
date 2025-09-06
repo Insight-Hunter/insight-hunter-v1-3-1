@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   server: { port: 5173 },
   build: {
-    outDir: 'dist',
+    outDir: 'public',
     sourcemap: true,
     rollupOptions: {
       input: 'src/worker.ts', // or 'src/worker.js' if JS
