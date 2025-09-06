@@ -6,7 +6,6 @@ export interface Env {
   R2: R2Bucket;
   DB: D1Database;
   DB_STEPS: D1Database;
-  NOTIFY_QUEUE: Queue;
   AE: AnalyticsEngineDataset;
 }
 
