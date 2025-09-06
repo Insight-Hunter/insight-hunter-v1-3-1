@@ -41,12 +41,12 @@ binding = "R2"
 bucket_name = "insight-hunter"
 
 [[d1_databases]]
-binding = "DB"
+binding = "env.DB"
 database_name = "insight_hunter_db"
 database_id = "3678f73e-c2cb-48fb-9cb4-91e6141024f4"
 
 [[d1_databases]]
-binding = "DB_STEPS"
+binding = "env.DB_STEPS"
 database_name = "steps"
 database_id = "7d48731f-4a4c-46b2-a3cb-0d39f03a5331"
 
@@ -79,7 +79,7 @@ APP_NAME = "Insight Hunter Dev"
 # ------------ Staging Environment ------------
 [env.staging]
 name = "ih-v1-3-2-staging"
-route = "staging.example.com/*"
+route = "staging.hunterturner.com/*"
 zone_id = "your-staging-zone-id"
 
 [env.staging.vars]
@@ -89,7 +89,7 @@ APP_NAME = "Insight Hunter Staging"
 # ------------ Production Environment ------------
 [env.production]
 name = "ih-v1-3-2-prod"
-route = "www.example.com/*"
+route = "insight.hunterturner.com/*"
 zone_id = "your-production-zone-id"
 
 [env.production.vars]
