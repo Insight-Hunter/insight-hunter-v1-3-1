@@ -1,10 +1,10 @@
 name = "ih-v1-3-2"
-main = "build/worker.mjs"
+main = "public/worker.mjs"
 compatibility_date = "2024-11-21"
 account_id = "18c8e61a3669253dcfd0c7eec6be36a3"
 
 [assets]
-directory = "./build"
+directory = "./public"
 
 [build]
 command = "npm run build"
@@ -12,7 +12,7 @@ cwd = "."
 
 [build.upload]
 format = "modules"
-upload_dir = "./build"
+upload_dir = "./public"
 
 [vars]
 NODE_ENV = "production"
