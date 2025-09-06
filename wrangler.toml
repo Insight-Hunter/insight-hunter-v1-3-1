@@ -10,7 +10,7 @@ directory = "dist"
 command = "npm run build"
 cwd = "."
 upload_format = "modules"
-upload_dir = "./build"
+upload_dir = "./dist"
 
 [vars]
 NODE_ENV = "production"
