@@ -63,7 +63,7 @@ enabled = true
 
 # ------------ Development Environment ------------
 [env.dev]
-name = "insight-hunter-v1-dev"
+name = "ih-v1-3-2-dev"
 workers_dev = true
 
 [env.dev.vars]
@@ -78,7 +78,7 @@ APP_NAME = "Insight Hunter Dev"
 
 # ------------ Staging Environment ------------
 [env.staging]
-name = "insight-hunter-v1-staging"
+name = "ih-v1-3-2-staging"
 route = "staging.example.com/*"
 zone_id = "your-staging-zone-id"
 
@@ -88,7 +88,7 @@ APP_NAME = "Insight Hunter Staging"
 
 # ------------ Production Environment ------------
 [env.production]
-name = "insight-hunter-v1-prod"
+name = "ih-v1-3-2-prod"
 route = "www.example.com/*"
 zone_id = "your-production-zone-id"
 
