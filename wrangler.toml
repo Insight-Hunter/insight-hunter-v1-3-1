@@ -8,7 +8,6 @@ directory = "./public"
 
 [build]
 command = "npm run build"
-cwd = "."
 
 [build.upload]
 format = "modules"
