@@ -18,8 +18,7 @@ export default defineConfig({
           "react-router-dom"],
           chartjs: ["chart.js"],
           capture: ["html2canvas"]
-        } 
-      }
+      } 
     }
   }
 });
