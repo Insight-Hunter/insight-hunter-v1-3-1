@@ -1,10 +1,10 @@
-name = "insight-hunter-v1"
+name = "insight-hunter-v1-3-2"
 main = "dist/worker.mjs"
 compatibility_date = "2024-11-21"
 account_id = "18c8e61a3669253dcfd0c7eec6be36a3"
 
 [assets]
-directory = "dist"
+directory = "./dist"
 
 [build]
 command = "npm run build"
@@ -51,9 +51,9 @@ binding = "DB_STEPS"
 database_name = "steps"
 database_id = "7d48731f-4a4c-46b2-a3cb-0d39f03a5331"
 
-[[queues.producers]]
-binding = "NOTIFY_QUEUE"
-queue = "insight-hunter-events"
+#// [[queues.producers]]
+#// binding = "NOTIFY_QUEUE"
+#// queue = "insight-hunter-events"
 
 [[analytics_engine_datasets]]
 binding = "AE"
