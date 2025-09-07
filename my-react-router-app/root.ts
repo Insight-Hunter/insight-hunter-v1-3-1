@@ -1,13 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Root from './Root';
-import App from './App';
-import './styles.css';
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <Root>
-      <App />
-    </Root>
-  </React.StrictMode>
-);
+type RootProps = {
+  children: React.ReactNode;
+};
+
+export default function Root({ children }: RootProps) {
+  return (
+    <div className="root-container">
+      {/* You can add global nav, header, footer here later */}
+      {children}
+    </div>
+  );
+}
