@@ -1,16 +1,16 @@
 name = "insight-hunter-v1"
-main = "dist/worker.mjs"
+main = "src/worker.ts"
 compatibility_date = "2024-11-21"
 account_id = "18c8e61a3669253dcfd0c7eec6be36a3"
 
 [assets]
-directory = "dist"
+directory = "src/assets"
 
 [build]
 command = "npm run build"
 cwd = "."
 upload_format = "modules"
-upload_dir = "./dist"
+upload_dir = "./src"
 
 [vars]
 NODE_ENV = "production"
