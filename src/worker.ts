@@ -19,7 +19,7 @@ export default {
       // Placeholder forecasting response
       const forecastData = {
         message: "Forecast data endpoint is working",
-         [],
+         
       };
       return new Response(JSON.stringify(forecastData), {
         headers: { "Content-Type": "application/json" },
