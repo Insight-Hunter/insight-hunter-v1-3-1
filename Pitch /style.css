@@ -8,9 +8,9 @@ body {
 }
 
 .presentation-container {
-  max-width: 960px;
+  max-width: 960;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20;
 }
 
 /* Add your full style rules here based on theme and brand colors */

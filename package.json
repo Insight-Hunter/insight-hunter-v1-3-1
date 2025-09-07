@@ -22,10 +22,11 @@
   },
   "devDependencies": {
     "@types/chart.js": "^4.0.1",
-    "@types/node": "^20.14.12",
+    "@types/node": "^20.19.13",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.7.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.2",
     "vite": "^7.1.4",
     "wrangler": "^4.34.0"

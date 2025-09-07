@@ -5,17 +5,20 @@ export default defineConfig({
   plugins: [react()],
   server: { port: 5173 },
   build: {
-    outDir: 'dist',
-    sourcemap: true,
-    chunkSizeWarningLimit: 900, // just raise the warning threshold
-    rollupOptions: {
-      output: {
+      outDir: 'dist',
+      sourcemap: true,
+      rollupOptions: {
+        input: 'src/worker.js',
+        output: {
+          entryFileNames: 'worker.mjs',
+          format: 'es'
+        },
         manualChunks: {
-          react: ["react", "react-dom", "react-router-dom"],
+          react: ["react", "react-dom",          
+          "react-router-dom"],
           chartjs: ["chart.js"],
           capture: ["html2canvas"]
-        }
+        } 
       }
     }
-  }
 });
