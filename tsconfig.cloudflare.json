@@ -1,28 +1,23 @@
 {
-  "extends": "./tsconfig.json",
-  "include": [
-    ".react-router/types/**/*",
-    "app/**/*",
-    "app/**/.server/**/*",
-    "app/**/.client/**/*",
-    "workers/**/*",
-    "worker-configuration.d.ts"
-  ],
+  {
+  "extends": "./tsconfig.json", 
   "compilerOptions": {
-    "composite": true,
-    "strict": true,
-    "lib": ["DOM", "DOM.Iterable", "ES2022"],
-    "types": ["@cloudflare/workers-types", "vite/client"],
-    "target": "ES2022",
-    "module": "ES2022",
-    "moduleResolution": "bundler",
-    "jsx": "react-jsx",
-    "baseUrl": ".",
-    "rootDirs": [".", "./.react-router/types"],
-    "paths": {
-      "~/*": ["./app/*"]
-    },
-    "esModuleInterop": true,
-    "resolveJsonModule": true
-  }
+    "target": "ES2022",                 // Optimized for modern environments[7]
+    "lib": ["ES2022", "DOM"],           // Support current JavaScript and web APIs[7]
+    "module": "ESNext",                 // Use ESNext for code-splitting and serverless[7]
+    "skipLibCheck": true,               // Faster builds for large codebases[7]
+    "strict": true,                     // Maximize safety in analytics logic[7]
+    "types": ["./worker-configuration.d.ts"], // Point to Cloudflare-specific generated types[8]
+    "esModuleInterop": true,            // Allow CommonJS module imports[7]
+    "resolveJsonModule": true,          // Allow importing JSON config/data[7]
+    "noEmit": true,                     // Type-check only; build handled by framework[2]
+    "forceConsistentCasingInFileNames": true, // Prevents case-related deployment issues[7]
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "declaration": false
+  },
+  "include": ["src/**/*", "worker-configuration.d.ts"], // All app logic & env bindings[8][2]
+  "exclude": ["node_modules", "dist", "build"]
 }
+
+
