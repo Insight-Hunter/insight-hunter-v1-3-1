@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   server: { port: 5173 },
   build: {
-      outDir: 'assets',
+      outDir: 'public/assets',
       sourcemap: true,
       rollupOptions: {
         input: 'src/worker.ts',
