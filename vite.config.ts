@@ -5,12 +5,12 @@ export default defineConfig({
   plugins: [react()],
   server: { port: 5173 },
   build: {
-      outDir: 'dist',
+      outDir: 'assets',
       sourcemap: true,
       rollupOptions: {
-        input: 'src/worker.js',
+        input: 'src/worker.ts',
         output: {
-          entryFileNames: 'worker.mjs',
+          entryFileNames: 'src/worker.mjs',
           format: 'es'
         },
         manualChunks: {
