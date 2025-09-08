@@ -25,7 +25,7 @@ const routes = [
       { path: "clientportal", element: <ClientPortal /> },
       { path: "reports", element: <Reports /> },
       { path: "signin", element: <SignIn /> },
-      { path: "signout", element: <SignUp /> }, // Check if this is correct
+      { path: "signup", element: <SignUp /> }, // Check if this is correct
       { path: "cashflow", element: <Cashflow /> },
       { path: "settings", element: <Settings /> },
       { path: "*", element: <NotFound /> },
