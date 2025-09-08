@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { Suspense } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
+import routes from "./react-router.config";
 
-type RootProps = {
-  children: React.ReactNode;
-};
+export default function Root() {
+  const routingElement = useRoutes(routes);
 
-export default function Root({ children }: RootProps) {
   return (
-    <div className="root-container">
-      {/* You can add global nav, header, footer here later */}
-      {children}
-    </div>
+    <BrowserRouter>
+      <Suspense fallback={<div style={{ padding: 24 }}>Loading…</div>}>
+        {routingElement}
+      </Suspense>
+    </BrowserRouter>
   );
 }
