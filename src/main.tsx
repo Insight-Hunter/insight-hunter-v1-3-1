@@ -1,13 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Root from './Root';
-import App from './App';
-import './styles.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Root from "./Root";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+const container = document.getElementById("root");
+
+if (!container) {
+  throw new Error("Root container missing in HTML");
+}
+
+const root = ReactDOM.createRoot(container);
+root.render(
   <React.StrictMode>
-    <Root>
-      <App />
-    </Root>
+    <Root />
   </React.StrictMode>
 );
