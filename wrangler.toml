@@ -4,13 +4,13 @@ compatibility_date = "2024-11-21"
 account_id = "18c8e61a3669253dcfd0c7eec6be36a3"
 
 [assets]
-directory = "src/assets"
+directory = "public/assets"
 
 [build]
 command = "npm run build"
 cwd = "."
 upload_format = "modules"
-upload_dir = "./src"
+upload_dir = "./public"
 
 [vars]
 NODE_ENV = "production"
@@ -52,8 +52,8 @@ database_name = "steps"
 database_id = "7d48731f-4a4c-46b2-a3cb-0d39f03a5331"
 
 [[queues.producers]]
-binding = "NOTIFY_QUEUE"
-queue = "insight-hunter-events"
+## binding = "NOTIFY_QUEUE"
+## queue = "insight-hunter-events"
 
 [[analytics_engine_datasets]]
 binding = "AE"
@@ -81,7 +81,7 @@ APP_NAME = "Insight Hunter Dev"
 [env.staging]
 name = "insight-hunter-v1-staging"
 route = "staging.example.com/*"
-zone_id = "your-staging-zone-id"
+zone_id = "staging.hunterturner.com"
 
 [env.staging.vars]
 NODE_ENV = "staging"
@@ -90,8 +90,8 @@ APP_NAME = "Insight Hunter Staging"
 # ------------ Production Environment ------------
 [env.production]
 name = "insight-hunter-v1-prod"
-route = "www.example.com/*"
-zone_id = "your-production-zone-id"
+route = "insight.hunterturner.com/*"
+zone_id = "insight.hunterturner.com"
 
 [env.production.vars]
 NODE_ENV = "production"
